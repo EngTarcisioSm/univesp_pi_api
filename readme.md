@@ -47,4 +47,13 @@
 
 + x.    [22.03.2023] refatoração do código 
   + branch 0001
+
++ xi.   [22.03.2023] Insersão de dados como ano, mes, dia, hora, minuto, segundo, milissegundos
+
++ xii.  [22.03.2023] Criação de novo método 
+  + novo get para visualizar dado isolado pelo dado_id
+  + criação do método post 
+
++ xiii. [22.03.2023] Alterada a logica de criação da apí
+  + No campo de dados foi incluido mais um dado  'type', indicando se o mesmo irá para o banco de dados sql ou para o sheets, 'db' para dados e 'sheet' para google sheet, esse campo type receberá apenas esses dois valores possiveis 
   

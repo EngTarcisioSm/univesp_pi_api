@@ -1,17 +1,17 @@
 # import de bibliotecas necessárias 
 from flask import Flask
-from flask_restful import Resource, Api
+from flask_restful import Api
 
-from resources.dadosDB import DadosReceiveDB
-from resources.dadosSHEET import DadosReceiveSheets
+from resources.dados import DadosReceive, DadoReceive
 
 # criação dos objetos 
 app = Flask(__name__)
 api = Api(app)
 
 # adicionando recurso na api
-api.add_resource(DadosReceiveDB, '/dados_db')
-api.add_resource(DadosReceiveSheets, '/dados_sheet')
+api.add_resource(DadosReceive, '/dados')
+api.add_resource(DadoReceive, '/dado/<int:dado_id>')
+
 
 
 if __name__ == "__main__":
