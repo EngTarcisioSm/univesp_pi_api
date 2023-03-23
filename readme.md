@@ -43,3 +43,4 @@
 + viii. [20.03.2023] criando o repositório no github
   
 + ix [22.03.2023] partição da api em duas, sendo que uma preparada para ser trabalhada em um banco de dados enquanto a outra utilizará o googlesheets como banco de dads 
+  + testes de get nas duas, com dados estáticos 
