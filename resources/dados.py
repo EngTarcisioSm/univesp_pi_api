@@ -1,5 +1,5 @@
 from flask_restful import Resource, reqparse
-from resources.teste import dados
+from resources.teste import dadosDB
 
 
 class DadosReceive(Resource):
@@ -7,13 +7,13 @@ class DadosReceive(Resource):
     def get(self):
         
         # resultado da implementacao get
-        return {'Dados': dados}
+        return {'Dados': dadosDB}
 
 class DadoReceive(Resource):
 
     def get(self, dado_id):
         
-        for dado in dados:
+        for dado in dadosDB:
                 
             if dado['dado_id'] == dado_id:
                 return dado
@@ -24,6 +24,7 @@ class DadoReceive(Resource):
 
         argumentos = reqparse.RequestParser()
 
+        argumentos.add_argument('dado_id')
         argumentos.add_argument('ano')
         argumentos.add_argument('mes')
         argumentos.add_argument('dia')
@@ -39,7 +40,7 @@ class DadoReceive(Resource):
         dados = argumentos.parse_args()
 
         novo_dado = {
-            'dado_id' : dado_id,
+            'dado_id' : int(dados['dado_id']),
             'ano' : dados['ano'],
             'mes' : dados['mes'],
             'dia' : dados['dia'],
@@ -48,12 +49,12 @@ class DadoReceive(Resource):
             'segundo' : dados['segundo'],
             'milissegundos' : dados['milissegundos'],
             'corrente' : dados['corrente'],
-            'tensao' : dados['temsao'],
+            'tensao' : dados['tensao'],
             'temperatura' : dados['temperatura'],
             'type': dados['type']
         }
 
-        dados.append(novo_dado)
+        dadosDB.append(novo_dado)
 
         return novo_dado, 200
     
