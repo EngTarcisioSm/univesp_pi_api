@@ -76,4 +76,6 @@
 
 + xvii.  [27.03.2023] Correção de dados armazenados, os mesmos estavam sendo armazenados em tipo str, passando para tipo int e float quando necessário
 
++ xviii. [27.03.2023] merge de atualização no projeto efetuado 
+
 + parei em step 09/42
