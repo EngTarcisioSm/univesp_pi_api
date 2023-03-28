@@ -11,6 +11,20 @@ class DadosReceive(Resource):
 
 class DadoReceive(Resource):
 
+    def __init__(self) -> None:
+        self.argumentos = reqparse.RequestParser()
+        self.argumentos.add_argument('mes')
+        self.argumentos.add_argument('ano')
+        self.argumentos.add_argument('dia')
+        self.argumentos.add_argument('hora')
+        self.argumentos.add_argument('minuto')
+        self.argumentos.add_argument('segundo')
+        self.argumentos.add_argument('milissegundos')
+        self.argumentos.add_argument('corrente')
+        self.argumentos.add_argument('tensao')
+        self.argumentos.add_argument('temperatura')
+        self.argumentos.add_argument('type')
+
     def get(self, dado_id):
         
         for dado in dadosDB:
@@ -22,44 +36,40 @@ class DadoReceive(Resource):
 
     def post(self, dado_id):
 
-        argumentos = reqparse.RequestParser()
+        dados = self.argumentos.parse_args()
+        novo_dado = {'dado_id': int(dado_id), **dados}
 
-        argumentos.add_argument('dado_id')
-        argumentos.add_argument('ano')
-        argumentos.add_argument('mes')
-        argumentos.add_argument('dia')
-        argumentos.add_argument('hora')
-        argumentos.add_argument('minuto')
-        argumentos.add_argument('segundo')
-        argumentos.add_argument('milissegundos')
-        argumentos.add_argument('corrente')
-        argumentos.add_argument('tensao')
-        argumentos.add_argument('temperatura')
-        argumentos.add_argument('type')
+        checkDado = self.findDado(dado_id)
 
-        dados = argumentos.parse_args()
+        if checkDado == None:
+            dadosDB.append(novo_dado)
+            return novo_dado, 200
+        else: 
+            return {'message': ' dado_id already exist'}, 403
+    
+    def put(self, dado_id):
 
-        novo_dado = {
-            'dado_id' : int(dados['dado_id']),
-            'ano' : dados['ano'],
-            'mes' : dados['mes'],
-            'dia' : dados['dia'],
-            'hora' : dados['hora'],
-            'minuto' : dados['minuto'],
-            'segundo' : dados['segundo'],
-            'milissegundos' : dados['milissegundos'],
-            'corrente' : dados['corrente'],
-            'tensao' : dados['tensao'],
-            'temperatura' : dados['temperatura'],
-            'type': dados['type']
-        }
+        dadoInDB = self.findDado(dado_id)
+        dados = self.argumentos.parse_args()
+        novo_dado = {'dado_id': int(dado_id), **dados}
 
+        if dadoInDB:           
+            dadoInDB.update(novo_dado)
+            return novo_dado, 200
+        
         dadosDB.append(novo_dado)
+        return novo_dado, 201
 
-        return novo_dado, 200
+    def delete(self, dado_id):
+
+        dadoInDB = self.findDado(dado_id)
+        if dadoInDB:
+            dadosDB = [dado for dado in dadosDB if dadosDB['dado_id'] != int(dado_id)]
+            return {'message': 'Dado deleted'}
+        return {'message': "dado_id not exist"}
     
-    def put(self):
-        ...
-    
-    def delete(self):
-        ...
+    def findDado(self, dado_id):
+        for dado in dadosDB:
+            if dado['dado_id'] == int(dado_id):
+                return dado
+        return None

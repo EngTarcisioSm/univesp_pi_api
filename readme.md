@@ -56,4 +56,18 @@
 
 + xiii. [22.03.2023] Alterada a logica de criação da apí
   + No campo de dados foi incluido mais um dado  'type', indicando se o mesmo irá para o banco de dados sql ou para o sheets, 'db' para dados e 'sheet' para google sheet, esse campo type receberá apenas esses dois valores possiveis 
+
++ xiv.  [27.03.2023] Inserção do metodo put
   
++ xv.   [27.03.2023] Refatoração de código 
+
++ xvi.   [27.03.2023] inserção da checagem em post se o id utilizado ja esta sendo utilizado
+
++ xvii.  [27.03.2023] Não é mais necessário no json de envio inserir o dado_id entretando na html de envio ele deve constar, exemplo:
+~~~
+    http://127.0.0.1:5000/dado/5
+~~~
+  
++ xviii. [27.03.2023] metodo delete implementado, verifica se o dado que deseja ser deletado exist.
+
++ xix.   [27.03.2023] inicio do processo de construção do banco de dados (modo desenvolvimento)
