@@ -71,3 +71,9 @@
 + xviii. [27.03.2023] metodo delete implementado, verifica se o dado que deseja ser deletado exist.
 
 + xix.   [27.03.2023] inicio do processo de construção do banco de dados (modo desenvolvimento)
+
++ xvi.   [27.03.2023] criado o modelo para os dados 
+
++ xvii.  [27.03.2023] Correção de dados armazenados, os mesmos estavam sendo armazenados em tipo str, passando para tipo int e float quando necessário
+
++ parei em step 09/42

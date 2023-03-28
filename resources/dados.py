@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse
 from resources.teste import dadosDB
-
+from models.dadoModel import DadoModel
 
 class DadosReceive(Resource):
     # implementacao de metodo get para teste
@@ -13,8 +13,8 @@ class DadoReceive(Resource):
 
     def __init__(self) -> None:
         self.argumentos = reqparse.RequestParser()
-        self.argumentos.add_argument('mes')
         self.argumentos.add_argument('ano')
+        self.argumentos.add_argument('mes')
         self.argumentos.add_argument('dia')
         self.argumentos.add_argument('hora')
         self.argumentos.add_argument('minuto')
@@ -37,7 +37,8 @@ class DadoReceive(Resource):
     def post(self, dado_id):
 
         dados = self.argumentos.parse_args()
-        novo_dado = {'dado_id': int(dado_id), **dados}
+
+        novo_dado = self.generateJson(int(dado_id), **dados)
 
         checkDado = self.findDado(dado_id)
 
@@ -51,7 +52,8 @@ class DadoReceive(Resource):
 
         dadoInDB = self.findDado(dado_id)
         dados = self.argumentos.parse_args()
-        novo_dado = {'dado_id': int(dado_id), **dados}
+
+        novo_dado = self.generateJson(int(dado_id), **dados)
 
         if dadoInDB:           
             dadoInDB.update(novo_dado)
@@ -61,15 +63,20 @@ class DadoReceive(Resource):
         return novo_dado, 201
 
     def delete(self, dado_id):
-
+        global dadosDB
         dadoInDB = self.findDado(dado_id)
         if dadoInDB:
-            dadosDB = [dado for dado in dadosDB if dadosDB['dado_id'] != int(dado_id)]
+            dadosDB = [dado for dado in dadosDB if dado['dado_id'] != int(dado_id)]
             return {'message': 'Dado deleted'}
         return {'message': "dado_id not exist"}
     
     def findDado(self, dado_id):
+        
         for dado in dadosDB:
             if dado['dado_id'] == int(dado_id):
                 return dado
         return None
+
+    def generateJson(self, dado_id, ano, mes, dia, hora, minuto, segundo, milissegundos, corrente, tensao, temperatura, type):
+        novo_dado_obj = DadoModel(int(dado_id), ano, mes, dia, hora, minuto, segundo, milissegundos, corrente, tensao, temperatura, type)
+        return novo_dado_obj.json()
