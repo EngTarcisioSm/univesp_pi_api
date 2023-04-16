@@ -101,3 +101,6 @@
   + tensão deve sempre ser composto por 7 caracteres sendo do tipo string (ex: "001.000" "010.001" 100.000)
   + temperatura deve sempre ser composto por 7 caracteres sendo do tipo string (ex: "001.000" "010.001" 100.000)
 
+
+- to be continue
+
