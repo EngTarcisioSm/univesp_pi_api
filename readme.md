@@ -79,3 +79,25 @@
 + xviii. [27.03.2023] merge de atualização no projeto efetuado 
 
 + xix    [14.04.2023] Criação do modulo de integração api google (drive + sheets) com api do projeto univesp no arquivo modules/moduleSheets.py
+
++ xx     [16.04.2023] Efetuada a integração api-Projeto-Integrador com modulo de comunicação api-google
+  + metodos
+    + "get geral"
+    + get
+    + post
+    + put
+    + delete
+
++ xxi    [16.04.2023] A inserção de dados na api-projeto-integrador deve OBRIGATÓRIAMENTE obedecer a algumas regras, do contrário o comportamento não será como aquele previsto 
+  + todos os dados de entrada bem como sua chaves devem ser do tipo string 
+  + ano deve ser composto por 4 caracteres sendo do tipo string
+  + mes deve sempre ser composto por 2 caracteres sendo do tipo string (ex: "01" "12")
+  + dia deve sempre ser composto por 2 caracteres sendo do tipo string (ex: "01" "12")
+  + hora deve sempre ser composto por 2 caracteres sendo do tipo string (ex: "01" "12")
+  + minuto deve sempre ser composto por 2 caracteres sendo do tipo string (ex: "01" "12")
+  + segundo deve sempre ser composto por 2 caracteres sendo do tipo string (ex: "01" "12")
+  + milissegundos deve sempre ser composto por 3 caracteres sendo do tipo string (ex: "001" "012" "900")
+  + corrente deve sempre ser composto por 7 caracteres sendo do tipo string (ex: "001.000" "010.001" 100.000)
+  + tensão deve sempre ser composto por 7 caracteres sendo do tipo string (ex: "001.000" "010.001" 100.000)
+  + temperatura deve sempre ser composto por 7 caracteres sendo do tipo string (ex: "001.000" "010.001" 100.000)
+

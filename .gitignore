@@ -5,3 +5,7 @@ venv/
 # python_cash
 __pycache__/
 .__pycache__
+
+# arquivos de credencial
+credential.json
+token.json

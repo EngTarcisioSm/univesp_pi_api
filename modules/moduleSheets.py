@@ -23,18 +23,23 @@ class InterationSheets:
         # The file token.json stores the user's access and refresh tokens, and is
         # created automatically when the authorization flow completes for the first
         # time.
-        if os.path.exists('token.json'):
-            self.creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+
+        dirname = os.path.dirname(__file__)
+        filename_token = os.path.join(dirname, "token.json")
+        filename_credential = os.path.join(dirname, "credential.json")
+
+        if os.path.exists(filename_token):
+            self.creds = Credentials.from_authorized_user_file(filename_token, SCOPES)
         # If there are no (valid) credentials available, let the user log in.
         if not self.creds or not self.creds.valid:
             if self.creds and self.creds.expired and self.creds.refresh_token:
                 self.creds.refresh(Request())
             else:
                 flow = InstalledAppFlow.from_client_secrets_file(
-                    'credential.json', SCOPES)
+                    filename_credential, SCOPES)
                 self.creds = flow.run_local_server(port=0)
             # Save the credentials for the next run
-            with open('token.json', 'w') as token:
+            with open(filename_token, 'w') as token:
                 token.write(self.creds.to_json())
         
     
@@ -82,7 +87,7 @@ class InterationSheets:
             result = sheet.values().update(
                 spreadsheetId=SAMPLE_SPREADSHEET_ID,
                 range= sample_range_name,
-                valueInputOption='USER_ENTERED',
+                valueInputOption='RAW',
                 body={
                     "values": listaDados
                 }
@@ -92,7 +97,7 @@ class InterationSheets:
 
         
         except HttpError as err:
-            ...
+            print(err)
         
 
 if __name__ == "__main__":    
