@@ -34,6 +34,10 @@ class DadoModel:
         }
     
     def dataSendSheets(self):
-        tempo = str(self.dia) + "/" + str(self.mes) + "/" + str(self.ano) + "-" + str(self.hora) + ":" + str(self.minuto) + ":" + str(self.segundo) + ":" + str(self.milissegundos)
-        data = "U:" + str(self.tensao) + "|" + "I:" + str(self.corrente) + "|" + "T:" + str(self.temperatura)  
-        return [[tempo, data],]
+        dia = str(self.dia) + "/" + str(self.mes) + "/" + str(self.ano)
+        hora = str(self.hora) + ":" + str(self.minuto) + ":" + str(self.segundo)
+        tensao =str(self.tensao)
+        corrente = str(self.corrente)  
+        temperatura = str(self.temperatura)
+        return [[dia, hora, tensao, corrente, temperatura],]
+    

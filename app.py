@@ -3,6 +3,7 @@ from flask import Flask
 from flask_restful import Api
 
 from resources.dados import DadosReceive, DadoReceive
+from resources.findID import FindID
 
 # criação dos objetos 
 app = Flask(__name__)
@@ -11,6 +12,7 @@ api = Api(app)
 # adicionando recurso na api
 api.add_resource(DadosReceive, '/dados')
 api.add_resource(DadoReceive, '/dado/<int:dado_id>')
+api.add_resource(FindID, '/lastID')
 
 
 

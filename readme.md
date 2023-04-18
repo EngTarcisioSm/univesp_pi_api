@@ -101,6 +101,19 @@
   + tensão deve sempre ser composto por 7 caracteres sendo do tipo string (ex: "001.000" "010.001" 100.000)
   + temperatura deve sempre ser composto por 7 caracteres sendo do tipo string (ex: "001.000" "010.001" 100.000)
 
++ xxii  [16.04.2023] Integração do projeto com a real conta para desenvolvimento do trabalho.
 
-- to be continue
++ xxiii [16.04.2023] Solicitado pelo front end  de dados a alteração do uso de ponto por virgula nos dados do tipo float no projeto 
 
++ xxiv  [16.04.2023] Adaptação de código para atendimento ao front-end de dados 
+  + separação de data e hora e dos dados em colunas separadas
+
++ xxv   [17.04.2023] criação do recurso findID para descobrir o ultimo iD utilizado 
+  + http://127.0.0.1:5000/lastID
+  + lembrando que sempre o primeiro ID será o 2 pois a linha 1 são rotulos que são necessários para o front-end de dados 
+
++ xxvi  [17.04.2023] apenas o metodo get foi deixado ativo com unico recurso que é a demanda do projeto nesse momento 
+
++ xxvii [17.04.2023] alterações de xxi canceladas, dados de ponto flutuante levam virgula agora ao inves de ponto
+
++ xxviii [17.04.2023] \alterações de xxi canceladas, dados de ponto flutuante levam virgula agora ao inves de ponto

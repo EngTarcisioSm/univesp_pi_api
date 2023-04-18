@@ -12,7 +12,7 @@ import time
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
 # Localiza o nome do arquivo sheets em trabalho 
-SAMPLE_SPREADSHEET_ID = '1V_CQnIdQdlPZEbMZ45un_ID4JYSpTMKrlT0uqylmn5A'
+SAMPLE_SPREADSHEET_ID = '1jLpJmAjeMj9DsxWLwsHlkiNNXkR1dIAkX0NFjkqiqDc'
 
 
 
@@ -87,7 +87,7 @@ class InterationSheets:
             result = sheet.values().update(
                 spreadsheetId=SAMPLE_SPREADSHEET_ID,
                 range= sample_range_name,
-                valueInputOption='RAW',
+                valueInputOption='USER_ENTERED',
                 body={
                     "values": listaDados
                 }
