@@ -116,4 +116,6 @@
 
 + xxvii [17.04.2023] alterações de xxi canceladas, dados de ponto flutuante levam virgula agora ao inves de ponto
 
-+ xxviii [17.04.2023] \alterações de xxi canceladas, dados de ponto flutuante levam virgula agora ao inves de ponto
++ xxviii [17.04.2023] alterações de xxi canceladas, dados de ponto flutuante levam virgula agora ao inves de ponto
+
++ xxviii [18.04.2023] merge realizado
